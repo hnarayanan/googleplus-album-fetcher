@@ -4,6 +4,7 @@ syntax: glob
 *.pyc
 *.pyo
 .DS_Store
+output
 
 syntax: regexp
 .*\#.*\#$
