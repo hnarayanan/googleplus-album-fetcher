@@ -42,7 +42,7 @@ for album in albums.entry:
         # output_file.write('<hr />')
         # output_file.write('<br />')
         output_file.write(header)
-        photo_query = '/data/feed/api/user/%s/albumid/%s?kind=photo'
+        photo_query = '/data/feed/api/user/%s/albumid/%s?kind=photo&imgmax=900&thumbsize=120'
         photos = gd_client.GetFeed(photo_query % (user_id, album_id))
         for photo in photos.entry:
             output_file.write('	          <a href="%s" title=""><img class="thumbnail-photo" src="%s" alt="%s" /></a>\n' % (photo.content.src, photo.media.thumbnail[0].url, photo.title.text))
