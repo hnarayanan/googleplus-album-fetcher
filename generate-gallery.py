@@ -17,6 +17,13 @@ output_dir = 'output'
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
+# Read boilerplate header and footer files
+header_file = open('gallery-header.html', 'r')
+header = header_file.read()
+footer_file = open('gallery-footer.html', 'r')
+footer = footer_file.read()
+
+
 # Create a connection to the Picasa Web Albums service
 gd_client = gdata.photos.service.PhotosService()
 gd_client.source = 'org-harishnarayanan-album-fetcher'
@@ -32,12 +39,17 @@ for album in albums.entry:
         if not os.path.exists(os.path.join(output_dir, album_id)):
             os.makedirs(os.path.join(output_dir, album_id))
         output_file = open(os.path.join(output_dir, album_id, 'index.html'), 'w+')
-        output_file.write('%s' % album.title.text)
-        output_file.write('<hr />')
-        output_file.write('<br />')
+        # output_file.write('%s' % album.title.text)
+        # output_file.write('<hr />')
+        # output_file.write('<br />')
+        output_file.write(header)
         photo_query = '/data/feed/api/user/%s/albumid/%s?kind=photo'
         photos = gd_client.GetFeed(photo_query % (user_id, album_id))
         for photo in photos.entry:
-            output_file.write('	          <a href="%s" title="%s"><img class="thumbnail-photo" src="%s" alt="%s" /></a>' % (photo.content.src, album.title.text, photo.media.thumbnail[0].url, photo.title.text))
-
+            output_file.write('	          <a href="%s" title="%s"><img class="thumbnail-photo" src="%s" alt="%s" /></a>\n' % (photo.content.src, album.title.text, photo.media.thumbnail[0].url, photo.title.text))
+        output_file.write(footer)
         output_file.close()
+
+# Close header and footer files
+header_file.close()
+footer_file.close()
