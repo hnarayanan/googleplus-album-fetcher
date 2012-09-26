@@ -23,7 +23,6 @@ header = header_file.read()
 footer_file = open('gallery-footer.html', 'r')
 footer = footer_file.read()
 
-
 # Create a connection to the Picasa Web Albums service
 gd_client = gdata.photos.service.PhotosService()
 gd_client.source = 'org-harishnarayanan-album-fetcher'
@@ -46,7 +45,7 @@ for album in albums.entry:
         photo_query = '/data/feed/api/user/%s/albumid/%s?kind=photo'
         photos = gd_client.GetFeed(photo_query % (user_id, album_id))
         for photo in photos.entry:
-            output_file.write('	          <a href="%s" title="%s"><img class="thumbnail-photo" src="%s" alt="%s" /></a>\n' % (photo.content.src, album.title.text, photo.media.thumbnail[0].url, photo.title.text))
+            output_file.write('	          <a href="%s" title=""><img class="thumbnail-photo" src="%s" alt="%s" /></a>\n' % (photo.content.src, photo.media.thumbnail[0].url, photo.title.text))
         output_file.write(footer)
         output_file.close()
 
