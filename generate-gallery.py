@@ -34,14 +34,12 @@ albums = gd_client.GetUserFeed(user=user_id)
 # separate folder
 for album in albums.entry:
     album_id = album.gphoto_id.text
+    album_name = album.name.text
     if album_id not in ignored_albums:
-        if not os.path.exists(os.path.join(output_dir, album_id)):
-            os.makedirs(os.path.join(output_dir, album_id))
-        output_file = open(os.path.join(output_dir, album_id, 'index.html'), 'w+')
-        # output_file.write('%s' % album.title.text)
-        # output_file.write('<hr />')
-        # output_file.write('<br />')
-        output_file.write(header)
+        if not os.path.exists(os.path.join(output_dir, album_name)):
+            os.makedirs(os.path.join(output_dir, album_name))
+        output_file = open(os.path.join(output_dir, album_name, 'index.html'), 'w+')
+        output_file.write(header.replace('insert_title_here', album.title.text).replace('insert_nav_here', album.name.text))
         photo_query = '/data/feed/api/user/%s/albumid/%s?kind=photo&imgmax=900&thumbsize=120'
         photos = gd_client.GetFeed(photo_query % (user_id, album_id))
         for photo in photos.entry:
