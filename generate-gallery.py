@@ -8,9 +8,28 @@ import gdata.geo
 
 # User-specific data
 user_id = '100382636415340600164'
-ignored_albums = ('5716491723391976337', '5706446377771654129',
-                  '5688661881733842001', '5668520065107350593',
-                  '5625206640295281457', '5625205598890785729')
+album_slugs = {
+    '5783207452453609937': 'varun-anjana-wedding',
+    '5781964989109220945': 'little-red-ballon',
+    '5728691721616953937': 'orchids',
+    '5728351777627931361': 'little-sophia-2',
+    '5727942887751475185': 'winter-in-asia-1',
+    '5666414450941496769': 'cioccolato-caldos-venice',
+    '5653768281833902481': 'around-reykjavik',
+    '5651519564381807345': 'little-sophia-1',
+    '5647829104430215425': 'blurry-hats',
+    '5642845305313104737': 'swimming-smogen',
+    '5642844753874283761': 'tiny-happy-people',
+    '5642840064612531521': 'mollys-birthday',
+    '5642837607132950017': 'tinas-friends',
+    '5642836789542967345': 'leaving-tims',
+    '5642834304536358225': 'ivan-romana-classroom',
+    '5642832651279517809': 'scandinavia-tour',
+    '5642832159279550401': 'may17-breakfast',
+    '5642828447257995681': 'ashwin-geetha-wedding',
+    '5642827581635542369': 'summer-morning',
+    '5639603398701084769': 'art'
+    }
 
 # Create a folder to store the output
 output_dir = 'output'
@@ -30,15 +49,15 @@ gd_client.source = 'org-harishnarayanan-album-fetcher'
 # Request a list of albums for a given user
 albums = gd_client.GetUserFeed(user=user_id)
 
-# For each unignored album, generate the gallery code and drop it in a
+# For each required album, generate the gallery code and drop it in a
 # separate folder
 for album in albums.entry:
     album_id = album.gphoto_id.text
-    album_name = album.name.text
-    if album_id not in ignored_albums:
-        if not os.path.exists(os.path.join(output_dir, album_name)):
-            os.makedirs(os.path.join(output_dir, album_name))
-        output_file = open(os.path.join(output_dir, album_name, 'index.html'), 'w+')
+    if album_id in album_slugs.keys():
+        album_slug = album_slugs[album_id]
+        if not os.path.exists(os.path.join(output_dir, album_slug)):
+            os.makedirs(os.path.join(output_dir, album_slug))
+        output_file = open(os.path.join(output_dir, album_slug, 'index.html'), 'w+')
         output_file.write(header.replace('insert_title_here', album.title.text).replace('insert_nav_here', album.name.text))
         photo_query = '/data/feed/api/user/%s/albumid/%s?kind=photo&imgmax=900&thumbsize=120'
         photos = gd_client.GetFeed(photo_query % (user_id, album_id))
