@@ -18,17 +18,8 @@ album_slugs = {
     '5653768281833902481': 'around-reykjavik',
     '5651519564381807345': 'little-sophia-1',
 #    '5647829104430215425': 'blurry-hats',
-#    '5642845305313104737': 'swimming-smogen',
-#    '5642844753874283761': 'tiny-happy-people',
-#    '5642840064612531521': 'mollys-birthday',
 #    '5642837607132950017': 'tinas-friends',
 #    '5642836789542967345': 'leaving-tims',
-#    '5642834304536358225': 'ivan-romana-classroom',
-#    '5642832651279517809': 'scandinavia-tour',
-#    '5642832159279550401': 'may17-breakfast',
-#    '5642828447257995681': 'ashwin-geetha-wedding',
-#    '5642827581635542369': 'summer-morning',
-#    '5639603398701084769': 'art'
     }
 
 # If it doesn't exist already, create a folder to store the output
