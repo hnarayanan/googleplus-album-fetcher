@@ -28,7 +28,7 @@ but in essence:
 1. Install the Google Data (Python) client library on your
 computer. If you're running OS X with MacPorts, this is as simple as:
 
-``
+`sudo port install py27-gdata`
 
 2. Edit `user_id` and `album_slugs` in `generate-gallery.py` to point
 to yourself on Google+ and the unique IDs of the galleries you want to
