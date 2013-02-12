@@ -6,7 +6,7 @@ import gdata.photos.service
 import gdata.media
 import gdata.geo
 
-# Albums on Google+ have the following form:
+# Album URLs on Google+ have the following form:
 # https://plus.google.com/photos/[user_id]/albums/[album_id]
 #
 # So change the following to reflect the albums you want, giving
