@@ -1,6 +1,8 @@
 Fetch albums from Google+ onto your own site
 ============================================
 
+(C) 2012 Harish Narayanan
+
 Motivation
 ----------
 
@@ -23,16 +25,16 @@ How do you use it?
 ------------------
 
 The script is quite rough and requires a bunch of fiddling around,
-but in essence:
+but in essence, you:
 
 1. Install the Google Data (Python) client library on your
 computer. If you're running OS X with MacPorts, this is as simple as:
 
 `sudo port install py27-gdata`
 
-2. Edit `user_id` and `album_slugs` in `generate-gallery.py` to point
-to yourself on Google+ and the unique IDs of the galleries you want to
-extract.
+2. Open the script file `generate-gallery.py` and edit `user_id` and
+`album_slugs` in `generate-gallery.py` to point to yourself on Google+
+and the unique IDs of the galleries you want to extract.
 
 3. Edit the header and footer HTML in the `.html` files to suit your
 own website.
@@ -41,7 +43,7 @@ own website.
 
 `python generate-gallery.py`
 
-Which will fetch album data from Google+ and write out static HTML to
+which will fetch album data from Google+ and write out static HTML to
 `output/slug/index.html` (one for each album you requested) with
 galleries showcasing your photographs.
 
