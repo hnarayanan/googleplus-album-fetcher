@@ -6,20 +6,17 @@ import gdata.photos.service
 import gdata.media
 import gdata.geo
 
-# User-specific data
+# Albums on Google+ have the following form:
+# https://plus.google.com/photos/[user_id]/albums/[album_id]
+#
+# So change the following to reflect the albums you want, giving
+# them appropriate slugs. I've left some some of my albums in as a
+# sample.
 user_id = '100382636415340600164'
 album_slugs = {
+    '5840443431763834657': 'save-the-date',
     '5783207452453609937': 'varun-anjana-wedding',
     '5781964989109220945': 'little-red-balloon',
-    '5728691721616953937': 'orchids',
-    '5728351777627931361': 'little-sophia-2',
-    '5727942887751475185': 'winter-in-asia-1',
-    '5666414450941496769': 'cioccolato-caldos-venice',
-    '5653768281833902481': 'around-reykjavik',
-    '5651519564381807345': 'little-sophia-1',
-#    '5647829104430215425': 'blurry-hats',
-#    '5642837607132950017': 'tinas-friends',
-#    '5642836789542967345': 'leaving-tims',
     }
 
 # If it doesn't exist already, create a folder to store the output
